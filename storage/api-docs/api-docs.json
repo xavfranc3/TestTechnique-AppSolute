@@ -1,0 +1,47 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "UserApi OpenApi Documentation",
+        "description": "L5 Swagger OpenApi",
+        "contact": {
+            "email": "dev.xavier.francois@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://user.api.test/api",
+            "description": "API Server"
+        }
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "tags": [
+                    "welcome"
+                ],
+                "summary": "Welcome page",
+                "description": "Hello",
+                "operationId": "welcome",
+                "responses": {
+                    "200": {
+                        "description": "Successful"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "User Api",
+            "description": "User API Endpoints"
+        }
+    ],
+    "security": [
+        []
+    ]
+}
