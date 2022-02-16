@@ -19,14 +19,44 @@
         }
     ],
     "paths": {
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get list of users",
+                "description": "Get list of users with a default pagination of 5",
+                "operationId": "getUsersList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get user information",
+                "description": "Get user details and Astrological and Chinese signs",
+                "operationId": "getUser",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
         "/": {
             "get": {
                 "tags": [
-                    "welcome"
+                    "Welcome"
                 ],
                 "summary": "Welcome page",
                 "description": "Hello",
-                "operationId": "welcome",
+                "operationId": "Welcome",
                 "responses": {
                     "200": {
                         "description": "Successful"
@@ -35,12 +65,6 @@
             }
         }
     },
-    "tags": [
-        {
-            "name": "User Api",
-            "description": "User API Endpoints"
-        }
-    ],
     "security": [
         []
     ]
