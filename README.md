@@ -13,5 +13,5 @@ Tester l'application:
 php artisan test
 ```
 
-- Documentation d'api: http://localhost:8000/api/docs
+- Documentation de l'api: http://localhost:8000/api/docs
 

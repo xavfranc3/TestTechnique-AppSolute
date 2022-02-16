@@ -40,7 +40,7 @@
                     "Users"
                 ],
                 "summary": "Get user information",
-                "description": "Get user details and Astrological and Chinese signs",
+                "description": "Get user details and Zodiac and Chinese astrological signs",
                 "operationId": "getUser",
                 "responses": {
                     "200": {
