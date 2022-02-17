@@ -9,6 +9,7 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
 
+
     protected function initDatabase() {
         Artisan::call('migrate');
     }

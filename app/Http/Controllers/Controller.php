@@ -25,12 +25,6 @@ use Illuminate\Routing\Controller as BaseController;
  *      url=L5_SWAGGER_CONST_HOST,
  *      description="API Server"
  * )
-
- *
- * @OA\Tag(
- *     name="User Api",
- *     description="User API Endpoints"
- * )
  */
 
 class Controller extends BaseController
@@ -42,8 +36,8 @@ class Controller extends BaseController
      *     path="/",
      *     summary="Welcome page",
      *     description="Hello",
-     *     operationId="welcome",
-     *     tags={"welcome"},
+     *     operationId="Welcome",
+     *     tags={"Welcome"},
      * @OA\Response (
             response="200",
      *     description="Successful",
@@ -52,7 +46,7 @@ class Controller extends BaseController
      */
     public function welcome()
     {
-        return "Hello";
+        return response('Hello');
     }
 
 }
