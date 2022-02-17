@@ -75,6 +75,7 @@ class UserControllerTest extends TestCase
 
         $response
             ->assertJsonStructure([
+                'status',
                 'data' => [
                             'id',
                             'first_name',

@@ -3,17 +3,15 @@
 namespace App\Services;
 
 use App\Models\User;
-use InvalidArgumentException;
-use Illuminate\Support\Facades\Validator;
-use \Illuminate\Contracts\Validation;
 
 class UserService {
 
-    public function getUser($id) {
+    public function getUser($id): User {
         return User::find($id);
     }
 
-    public function paginateUsers() {
+    public function paginateUsers()
+    {
         return User::paginate(5);
     }
 
@@ -27,6 +25,5 @@ class UserService {
 
         $newUser->save();
         return $newUser->fresh();
-
     }
 }

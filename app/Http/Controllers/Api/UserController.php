@@ -8,7 +8,6 @@ use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Services\UserService;
-use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
@@ -84,10 +83,19 @@ class UserController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        $result = ['status' => 200];
 
+        $result['status'] = 200;
         try {
-            $result['data'] = $this->userService->createUser($request);
+            $validated = $request->validate([
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'email' => 'required|unique:users',
+                'date_of_birth' => 'required|date_format:Y-m-d',
+            ]);
+            if($validated)
+            {
+                $result['data'] = $this->userService->createUser($request);
+            }
         } catch (Exception $error) {
             $result = [
                 'status' => 500,
