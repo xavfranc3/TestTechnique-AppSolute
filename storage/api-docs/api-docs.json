@@ -24,9 +24,22 @@
                 "tags": [
                     "Users"
                 ],
-                "summary": "Get list of users",
+                "summary": "All users information",
                 "description": "Get list of users with a default pagination of 5",
                 "operationId": "getUsersList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create new user",
+                "description": "Register new user",
+                "operationId": "registerUser",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -39,7 +52,7 @@
                 "tags": [
                     "Users"
                 ],
-                "summary": "Get user information",
+                "summary": "Single user information",
                 "description": "Get user details and Zodiac and Chinese astrological signs",
                 "operationId": "getUser",
                 "responses": {

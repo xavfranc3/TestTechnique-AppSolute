@@ -25,7 +25,7 @@ class UserController extends Controller
      *      path="/api/users",
      *      operationId="getUsersList",
      *      tags={"Users"},
-     *      summary="Get list of users",
+     *      summary="All users information",
      *      description="Get list of users with a default pagination of 5",
      *      @OA\Response(
      *          response=200,
@@ -44,7 +44,7 @@ class UserController extends Controller
      *      path="/api/users/{id}",
      *      operationId="getUser",
      *      tags={"Users"},
-     *      summary="Get user information",
+     *      summary="Single user information",
      *      description="Get user details and Zodiac and Chinese astrological signs",
      *      @OA\Response(
      *          response=200,
@@ -70,12 +70,19 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return JsonResponse
+     * @OA\Post(
+     *      path="/api/users",
+     *      operationId="registerUser",
+     *      tags={"Users"},
+     *      summary="Create new user",
+     *      description="Register new user",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *    )
+     * )
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $result = ['status' => 200];
 
