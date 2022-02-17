@@ -15,7 +15,7 @@ class UserController extends Controller
     private UserService $userService;
     private AstrologicalSignsService $astrologyService;
 
-    public function __construct(UserService $userService, AstrologicalSignsService $astrologyService) {
+    public function __construct() {
         $this->userService = new UserService();
         $this->astrologyService = new AstrologicalSignsService();
     }
