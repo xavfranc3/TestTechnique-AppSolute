@@ -29,19 +29,6 @@ class UserServiceTest extends TestCase
         parent::tearDown();
     }
 
-
-
-    public function test_getUser_returns_manually_seeded_user(): void {
-        User::factory()->count(5)->create();
-
-//        Manually create a user
-        User::factory()->create($this->newUser);
-
-        $user = $this->userService->getUser('6');
-        $this->assertEquals($this->newUser['last_name'], $user->last_name);
-        $this->assertEquals($this->newUser['email'], $user->email);
-    }
-
     public function test_paginate_users_should_return_0(): void {
         $users = $this->userService->paginateUsers();
         $this->assertCount(0, $users);
@@ -57,4 +44,22 @@ class UserServiceTest extends TestCase
         $this->assertCount(3, $users);
     }
 
+    public function test_getUser_returns_manually_seeded_user(): void {
+        User::factory()->count(5)->create();
+
+//        Manually create a user
+        User::factory()->create($this->newUser);
+
+        $user = $this->userService->getUser('6');
+        $this->assertEquals($this->newUser['last_name'], $user->last_name);
+        $this->assertEquals($this->newUser['email'], $user->email);
+    }
+
+    public function test_createUser_returns_created_user(): void {
+        $user = $this->userService->createUser($this->newUser);
+        $this->assertEquals($this->newUser['last_name'], $user->last_name);
+        $this->assertEquals($this->newUser['first_name'], $user->first_name);
+        $this->assertEquals($this->newUser['email'], $user->email);
+        $this->assertEquals($this->newUser['date_of_birth'], $user->date_of_birth);
+    }
 }

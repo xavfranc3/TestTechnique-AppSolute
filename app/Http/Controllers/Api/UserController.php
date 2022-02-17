@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Services\AstrologicalSignsService;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Services\UserService;
 use Illuminate\Http\Response;
@@ -31,10 +33,10 @@ class UserController extends Controller
      *    )
      * )
      */
-    public function index(): Response
+    public function index(): JsonResponse
     {
         $users = $this->userService->paginateUsers();
-        return response(['users' => $users]);
+        return response()->json($users);
     }
 
     /**
@@ -50,23 +52,42 @@ class UserController extends Controller
      *    )
      * )
      */
-    public function show($id): Response
+    public function show($id): JsonResponse
     {
-        $user = $this->userService->getUser($id);
-        $chineseSign = $this->astrologyService->getChineseSign($user['date_of_birth']);
-        $zodiacSign = $this->astrologyService->getZodiacSign($user['date_of_birth']);
-        return response(['userDetails' => $user, 'chineseSign' => $chineseSign, 'zodiacSign' => $zodiacSign]);
+        try {
+            $user = $this->userService->getUser($id);
+            $chineseSign = $this->astrologyService->getChineseSign($user['date_of_birth']);
+            $zodiacSign = $this->astrologyService->getZodiacSign($user['date_of_birth']);
+
+            $result = ['data' => ['userDetails' => $user, 'chineseSign' => $chineseSign, 'zodiacSign' => $zodiacSign]];
+        } catch(Exception $error) {
+            $result = [
+                'status' => 500,
+                'error' => $error->getMessage()
+            ];
+        }
+        return response()->json($result);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Response
+     * @return JsonResponse
      */
     public function store(Request $request)
     {
-        return response('usercontroller store');
+        $result = ['status' => 200];
+
+        try {
+            $result['data'] = $this->userService->createUser($request);
+        } catch (Exception $error) {
+            $result = [
+                'status' => 500,
+                'error' => $error->getMessage()
+            ];
+        }
+        return response()->json($result, $result['status']);
     }
 
 }
