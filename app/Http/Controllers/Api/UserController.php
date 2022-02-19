@@ -89,7 +89,7 @@ class UserController extends Controller
             $validated = $request->validate([
                 'first_name' => 'required',
                 'last_name' => 'required',
-                'email' => 'required|unique:users',
+                'email' => 'required|unique:users|email',
                 'date_of_birth' => 'required|date_format:Y-m-d',
             ]);
             if($validated)
@@ -104,5 +104,4 @@ class UserController extends Controller
         }
         return response()->json($result, $result['status']);
     }
-
 }

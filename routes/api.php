@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ExternalUserController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,5 +19,6 @@ Route::group(['middleware' => 'api.basic.auth'], function () {
     Route::get('/users', [UserController::class, 'index']);
     Route::get('/users/{id}', [UserController::class, 'show']);
     Route::post('/users', [UserController::class, 'store']);
+    Route::get('/create_external_user', [ExternalUserController::class, 'storeExternalUser']);
 });
 

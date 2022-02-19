@@ -62,6 +62,21 @@
                 }
             }
         },
+        "/api/create_external_user": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create a user from external data",
+                "description": "Create a user with data supplied from an external api",
+                "operationId": "createExternalUsert",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
         "/": {
             "get": {
                 "tags": [

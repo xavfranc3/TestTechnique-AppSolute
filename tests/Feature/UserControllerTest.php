@@ -198,5 +198,4 @@ class UserControllerTest extends TestCase
             ]);
         $this->assertEquals($this->newUser['email'], $response['data']['email']);
     }
-
 }
