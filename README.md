@@ -3,6 +3,21 @@
 
 ## Test Technique Appsolute
 
+Ajouter des variables d'environnement telles que DB credentials(nécessaire):
+```bash
+cp env.example .env
+```
+
+Lancer les migrations:
+```bash
+php artisan migrate
+```
+
+Insérer un premier jeu de données:
+```bash
+php artisan db:seed
+```
+
 Lancer l'application:
 ```bash
 php artisan serve
@@ -14,4 +29,5 @@ php artisan test
 ```
 
 - Documentation de l'api: http://localhost:8000/api/docs
+- Collection PostMan: https://www.getpostman.com/collections/f327ec1b2bbee8d5a865
 

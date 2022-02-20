@@ -20,6 +20,5 @@ Route::group(['middleware' => 'api.basic.auth'], function () {
     Route::get('/users/{id}', [UserController::class, 'show']);
     Route::post('/users', [UserController::class, 'store']);
     Route::get('/external_user', [ExternalUserController::class, 'storeExternalUser']);
-
 });
 
