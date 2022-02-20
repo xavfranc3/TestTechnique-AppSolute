@@ -19,6 +19,36 @@
         }
     ],
     "paths": {
+        "/api/external_user": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create a user from external data",
+                "description": "Create a user with data supplied from an external api",
+                "operationId": "createExternalUser",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/external_user/laravelHelper": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create a user from external data using Laravel Helper",
+                "description": "Create a user with data supplied from an external api by using built-in laravel helpers",
+                "operationId": "createExternalUserWithLaravelHelper",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
         "/api/users": {
             "get": {
                 "tags": [
@@ -55,21 +85,6 @@
                 "summary": "Single user information",
                 "description": "Get user details and Zodiac and Chinese astrological signs",
                 "operationId": "getUser",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    }
-                }
-            }
-        },
-        "/api/create_external_user": {
-            "get": {
-                "tags": [
-                    "Users"
-                ],
-                "summary": "Create a user from external data",
-                "description": "Create a user with data supplied from an external api",
-                "operationId": "createExternalUsert",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
