@@ -31,31 +31,7 @@ class ExternalUserControllerTest extends TestCase
     public function test_create_external_user_route_creates_new_user(): void {
         $response = $this->call(
             'GET',
-            '/api/create_external_user',
-            [],
-            [],
-            [],
-            $this->httpHeaders);
-
-        $response
-            ->assertJsonStructure([
-                'status',
-                'data' => [
-                    'id',
-                    'first_name',
-                    'last_name',
-                    'date_of_birth',
-                    'created_at',
-                    'updated_at',
-                    'email'
-                ]
-            ]);
-    }
-
-    public function test_create_external_user_with_Laravel_helper_route_creates_new_user(): void {
-        $response = $this->call(
-            'GET',
-            '/api/create_external_user/laravelHelper',
+            '/api/external_user',
             [],
             [],
             [],

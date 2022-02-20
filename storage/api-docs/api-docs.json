@@ -34,21 +34,6 @@
                 }
             }
         },
-        "/api/external_user/laravelHelper": {
-            "get": {
-                "tags": [
-                    "Users"
-                ],
-                "summary": "Create a user from external data using Laravel Helper",
-                "description": "Create a user with data supplied from an external api by using built-in laravel helpers",
-                "operationId": "createExternalUserWithLaravelHelper",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    }
-                }
-            }
-        },
         "/api/users": {
             "get": {
                 "tags": [

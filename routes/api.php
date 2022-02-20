@@ -19,7 +19,7 @@ Route::group(['middleware' => 'api.basic.auth'], function () {
     Route::get('/users', [UserController::class, 'index']);
     Route::get('/users/{id}', [UserController::class, 'show']);
     Route::post('/users', [UserController::class, 'store']);
-    Route::get('/create_external_user', [ExternalUserController::class, 'storeExternalUser']);
-    Route::get('/create_external_user/laravelHelper', [ExternalUserController::class, 'storeExternalUserWithLaravelHelper']);
+    Route::get('/external_user', [ExternalUserController::class, 'storeExternalUser']);
+
 });
 

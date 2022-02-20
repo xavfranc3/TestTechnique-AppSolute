@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\User;
 use DateTime;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 
 class ExternalUserService
@@ -59,28 +58,4 @@ class ExternalUserService
         return $userData;
     }
 
-
-
-    public function createNewUserWithLaravelHelper(): User {
-        $originalUserArray = $this->fetchRandomUser();
-        $flattenedArray = Arr::dot($originalUserArray);
-        $newUser = new User($this->extractNewUserValues($flattenedArray));
-        $newUser->save();
-        return $newUser->fresh();
-    }
-
-    public function extractNewUserValues($flattenedArray): array {
-        $userData = [];
-        $userFields = [
-            'first_name' => 'results.0.name.first',
-            'last_name' => 'results.0.name.last',
-            'email' => 'results.0.email',
-            'date_of_birth' => 'results.0.dob.date'
-        ];
-        $userFieldsKeys = array_keys($userFields);
-        foreach ($userFieldsKeys as $userFieldsKey) {
-            $userData[$userFieldsKey] = $flattenedArray[$userFields[$userFieldsKey]];
-        }
-        return $userData;
-    }
 }

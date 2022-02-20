@@ -41,12 +41,4 @@ class ExternalUserServiceTest extends TestCase
         $this->assertArrayHasKey('email', $this->externalUserService->createExternalUser());
         $this->assertArrayHasKey('date_of_birth', $this->externalUserService->createExternalUser());
     }
-
-    public function test_createExternalUserWithLaravelHelper_returns_created_user_with_correct_structure(): void {
-        $this->assertArrayHasKey('first_name', $this->externalUserService->createNewUserWithLaravelHelper());
-        $this->assertArrayHasKey('last_name', $this->externalUserService->createNewUserWithLaravelHelper());
-        $this->assertArrayHasKey('email', $this->externalUserService->createNewUserWithLaravelHelper());
-        $this->assertArrayHasKey('date_of_birth', $this->externalUserService->createNewUserWithLaravelHelper());
-    }
-
 }
