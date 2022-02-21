@@ -16,9 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'api.basic.auth'], function () {
-    Route::get('/users', [UserController::class, 'index']);
-    Route::get('/users/{id}', [UserController::class, 'show']);
     Route::post('/users', [UserController::class, 'store']);
     Route::get('/external_user', [ExternalUserController::class, 'storeExternalUser']);
 });
+
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/{id}', [UserController::class, 'show']);
 

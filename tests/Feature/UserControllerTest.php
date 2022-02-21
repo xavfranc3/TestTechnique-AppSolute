@@ -48,13 +48,6 @@ class UserControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_index_function_without_auth_header_responds_with_401_status() {
-       $response = $this->call('GET', '/api/users');
-
-       $response->assertStatus(401);
-    }
-
-
     public function test_index_function_sends_correct_response_structure() {
 
 
@@ -92,18 +85,6 @@ class UserControllerTest extends TestCase
         );
 
         $response->assertStatus(200);
-    }
-
-    public function test_show_function_without_auth_header_responds_with_401_status() {
-
-        User::factory()->create($this->newUser);
-
-        $response = $this->call(
-            'GET',
-            '/api/users/1'
-        );
-
-        $response->assertStatus(401);
     }
 
     public function test_show_function_sends_accurate_response() {
