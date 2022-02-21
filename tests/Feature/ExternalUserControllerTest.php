@@ -15,6 +15,7 @@ class ExternalUserControllerTest extends TestCase
     {
         parent::setUp();
         $this->initDatabase();
+        $this->seedDatabase();
         $this->httpHeaders = [
             'HTTP_Authorization' => 'Basic' . base64_encode(env('BASIC_AUTH_USERNAME') . ':' . env('BASIC_AUTH_PASSWORD')),
             'PHP_AUTH_USER' => env('BASIC_AUTH_USERNAME'),

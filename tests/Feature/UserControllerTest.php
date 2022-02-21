@@ -19,6 +19,7 @@ class UserControllerTest extends TestCase
         parent::setUp();
         $this->initDatabase();
         $this->newUser = AppConstants::NEW_USER;
+        $this->seedDatabase();
         $this->httpHeaders = [
             'HTTP_Authorization' => 'Basic' . base64_encode(env('BASIC_AUTH_USERNAME') . ':' . env('BASIC_AUTH_PASSWORD')),
             'PHP_AUTH_USER' => env('BASIC_AUTH_USERNAME'),
@@ -56,7 +57,6 @@ class UserControllerTest extends TestCase
 
     public function test_index_function_sends_correct_response_structure() {
 
-        User::factory()->count(7)->create();
 
         $response = $this->call(
             'GET',
@@ -80,7 +80,6 @@ class UserControllerTest extends TestCase
      */
     public function test_show_function_with_auth_header_responds_with_200_status() {
 
-        User::factory()->count(7)->create();
         User::factory()->create($this->newUser);
 
         $response = $this->call(
@@ -97,7 +96,6 @@ class UserControllerTest extends TestCase
 
     public function test_show_function_without_auth_header_responds_with_401_status() {
 
-        User::factory()->count(7)->create();
         User::factory()->create($this->newUser);
 
         $response = $this->call(
@@ -110,12 +108,11 @@ class UserControllerTest extends TestCase
 
     public function test_show_function_sends_accurate_response() {
 
-        User::factory()->count(7)->create();
         User::factory()->create($this->newUser);
 
         $response = $this->call(
             'GET',
-            '/api/users/8',
+            '/api/users/11',
             [],
             [],
             [],
@@ -157,7 +154,6 @@ class UserControllerTest extends TestCase
 
     public function test_store_function_without_auth_header_responds_with_401_status() {
 
-        User::factory()->count(7)->create();
         User::factory()->create($this->newUser);
 
         $response = $this->call(
