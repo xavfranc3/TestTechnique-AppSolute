@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ApiBasicAuthMiddleware
 {
@@ -16,12 +17,6 @@ class ApiBasicAuthMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->getUser() === env('BASIC_AUTH_USERNAME') && $request->getPassword() === env('BASIC_AUTH_PASSWORD'))
-        {
-            return $next($request);
-        } else
-        {
-            return response() ->json('Unauthorized access', 401);
-        }
+        return Auth::onceBasic('user_name') ?: $next($request);
     }
 }
